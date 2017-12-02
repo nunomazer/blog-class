@@ -11,4 +11,24 @@
 |
 */
 
-Route::get('/', 'BlogController@index');
+Route::get('/', function () {
+    return redirect('/blog');
+});
+
+Route::get('/home', function () {
+    return redirect('/blog');
+})->name('home');
+
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{slug}', 'BlogController@showPost');
+
+Route::post('admin/post', 'BlogController@post');
+
+/** ADMIN */
+Route::get('/admin', 'AdminController@index');
+
+/** AUTH */
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
+
+

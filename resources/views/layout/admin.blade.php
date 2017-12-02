@@ -30,8 +30,8 @@
 
     <div class="blog-header">
         <div class="container">
-            <h1 class="blog-title">Blog Class</h1>
-            <p class="lead blog-description">Laravel + API + MongoDB + VueJs + weex.</p>
+            <h1 class="blog-title">Administração do Blog Class</h1>
+            <p class="lead blog-description">Administre seu aprendizado.</p>
         </div>
     </div>
 </header>
