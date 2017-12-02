@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class BlogController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('home');
     }
 }
