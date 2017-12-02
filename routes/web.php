@@ -22,6 +22,8 @@ Route::get('/home', function () {
 Route::get('blog', 'BlogController@index');
 Route::get('blog/{slug}', 'BlogController@showPost');
 
+Route::post('admin/post', 'BlogController@post');
+
 /** ADMIN */
 Route::get('/admin', 'AdminController@index');
 
