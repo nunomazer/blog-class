@@ -11,9 +11,4 @@
 |
 */
 
-/** FRONTEND */
-Route::get('/', 'BlogController@index');
-
-/** ADMIN */
-Route::get('/admin', 'AdminController@index');
-
+Route::get('/', 'HomeController@index');
