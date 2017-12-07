@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+
+use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
