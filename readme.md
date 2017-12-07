@@ -3,7 +3,7 @@
 A progressive tagged project to teach / demonstrate:
 
 * Laravel classical web
-* MongoDB 
+* MySQL 
 * Laravel API
 * VueJS + API
 * weex + API
