@@ -18,43 +18,42 @@
 
 <body>
 
-<header>
-    <div class="blog-masthead">
-        <div class="container">
-            <nav class="nav">
-                <a class="nav-link active" href="{{ url('/') }}">Blog</a>
-                <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
-            </nav>
+<div id="app">
+    <header>
+        <div class="blog-masthead">
+            <div class="container">
+                <nav class="nav">
+                    <a class="nav-link active" href="{{ url('/') }}">Blog</a>
+                    <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
+                </nav>
+            </div>
         </div>
-    </div>
 
-    <div class="blog-header">
-        <div class="container">
-            <h1 class="blog-title">Blog Class</h1>
-            <p class="lead blog-description">Laravel + API + MongoDB + VueJs + weex.</p>
-        </div>
-    </div>
-</header>
+        <cabecalho
+                titulo="Blog Class"
+                descricao="Laravel + API + MySQL + VueJs + weex."
+        ></cabecalho>
+    </header>
 
-<main role="main" class="container">
+    <main role="main" class="container">
 
-    <div class="row">
+        <div class="row">
 
-        <div class="col-sm-12 blog-main">
+            <div class="col-sm-12 blog-main">
 
-            @yield('content')
+                @yield('content')
 
-        </div><!-- /.blog-main -->
+            </div><!-- /.blog-main -->
 
-    </div><!-- /.row -->
+        </div><!-- /.row -->
 
-</main><!-- /.container -->
+    </main><!-- /.container -->
 
-<footer class="blog-footer">
-    <p>Projeto do Professor: Ademir Mazer Junior [ Nuno ] <a href="https://twitter.com/nunomazer">@nunomazer</a>.
-    </p>
-</footer>
-
+    <footer class="blog-footer">
+        <p>Projeto do Professor: Ademir Mazer Junior [ Nuno ] <a href="https://twitter.com/nunomazer">@nunomazer</a>.
+        </p>
+    </footer>
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -63,6 +62,20 @@
 <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('node_modules/popper.js/dist/umd/popper.min.js') }}"></script>
 <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('node_modules/vue/dist/vue.min.js') }}"></script>
+<script src="{{ asset('node_modules/http-vue-loader/src/httpVueLoader.js') }}"></script>
+
+@stack('scripts')
+
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+            'cabecalho': httpVueLoader('{{ asset(('js/components/cabecalho.vue')) }}'),
+        }
+    });
+</script>
+
 </body>
 </html>
 
