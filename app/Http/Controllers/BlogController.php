@@ -15,7 +15,12 @@ class BlogController extends Controller
     {
         return Post::where('published_at', '<=', Carbon::now())
             ->orderBy('published_at', 'desc')
-            ->paginate(15);
+            ->paginate(5);
+    }
+
+    private function getPostToShow($slug)
+    {
+        return Post::whereSlug($slug)->firstOrFail();
     }
 
     public function index()
@@ -27,7 +32,7 @@ class BlogController extends Controller
 
     public function showPost($slug)
     {
-        $post = Post::whereSlug($slug)->firstOrFail();
+        $post = $this->getPostToShow($slug);
 
         return view('blog.post')->withPost($post);
     }
@@ -48,8 +53,12 @@ class BlogController extends Controller
         return redirect()->to(URL::previous());
     }
 
-    public function getApiPost(Request $request)
+    public function getApiPost(Request $request, $slug = null)
     {
-        return $this->getPaginatedPosts();
+        if ($slug == null) {
+            return $this->getPaginatedPosts();
+        }
+
+        return $this->getPostToShow($slug);
     }
 }
