@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/post/{id?}', 'BlogController@getApiPost');
+Route::post('/post/{id?}', 'BlogController@postApiPost');

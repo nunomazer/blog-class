@@ -53,6 +53,22 @@ class BlogController extends Controller
         return redirect()->to(URL::previous());
     }
 
+    public function postApiPost(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->get('content');
+        $post->published_at = Carbon::now();
+        $post->save();
+
+        return response()->json(['message'=> 'Post gravado com sucesso!']);
+    }
+
     public function getApiPost(Request $request, $slug = null)
     {
         if ($slug == null) {

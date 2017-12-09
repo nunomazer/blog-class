@@ -5,5 +5,6 @@ new Vue({
     components: {
         'cabecalho': httpVueLoader(appConfig.url + '/js/components/cabecalho.vue'),
         'blog-list': httpVueLoader(appConfig.url + '/js/components/blog-list.vue'),
+        'blog-post': httpVueLoader(appConfig.url + '/js/components/blog-post.vue'),
     },
 });
