@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\URL;
 
 class BlogController extends Controller
 {
-    public function index()
+
+    private function getPaginatedPosts()
     {
-        $posts = Post::where('published_at', '<=', Carbon::now())
+        return Post::where('published_at', '<=', Carbon::now())
             ->orderBy('published_at', 'desc')
             ->paginate(15);
+    }
+
+    public function index()
+    {
+        $posts = $this->getPaginatedPosts();
 
         return view('blog.index', compact('posts'));
     }
@@ -40,5 +46,10 @@ class BlogController extends Controller
         $post->save();
 
         return redirect()->to(URL::previous());
+    }
+
+    public function getApiPost(Request $request)
+    {
+        return $this->getPaginatedPosts();
     }
 }
