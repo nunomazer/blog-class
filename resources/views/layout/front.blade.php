@@ -64,17 +64,9 @@
 <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('node_modules/vue/dist/vue.min.js') }}"></script>
 <script src="{{ asset('node_modules/http-vue-loader/src/httpVueLoader.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 @stack('scripts')
-
-<script>
-    new Vue({
-        el: '#app',
-        components: {
-            'cabecalho': httpVueLoader('{{ asset(('js/components/cabecalho.vue')) }}'),
-        }
-    });
-</script>
 
 </body>
 </html>
