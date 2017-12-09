@@ -10,18 +10,29 @@ use Illuminate\Support\Facades\URL;
 
 class BlogController extends Controller
 {
+
+    private function getPaginatedPosts()
+    {
+        return Post::where('published_at', '<=', Carbon::now())
+            ->orderBy('published_at', 'desc')
+            ->paginate(5);
+    }
+
+    private function getPostToShow($slug)
+    {
+        return Post::whereSlug($slug)->firstOrFail();
+    }
+
     public function index()
     {
-        $posts = Post::where('published_at', '<=', Carbon::now())
-            ->orderBy('published_at', 'desc')
-            ->paginate(15);
+        $posts = $this->getPaginatedPosts();
 
         return view('blog.index', compact('posts'));
     }
 
     public function showPost($slug)
     {
-        $post = Post::whereSlug($slug)->firstOrFail();
+        $post = $this->getPostToShow($slug);
 
         return view('blog.post')->withPost($post);
     }
@@ -40,5 +51,14 @@ class BlogController extends Controller
         $post->save();
 
         return redirect()->to(URL::previous());
+    }
+
+    public function getApiPost(Request $request, $slug = null)
+    {
+        if ($slug == null) {
+            return $this->getPaginatedPosts();
+        }
+
+        return $this->getPostToShow($slug);
     }
 }

@@ -55,8 +55,15 @@
     </footer>
 </div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
+<script>
+    // configurações para serem utilizadas com a app frontend, vindas de inserções de valores do backend
+    function getAppConfig() {
+        return {
+            url: '{{ asset('/') }}',
+        }
+    }
+</script>
+
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{ asset('node_modules/jquery/dist/jquery.slim.min.js') }}"></script>
 <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
@@ -64,6 +71,7 @@
 <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('node_modules/vue/dist/vue.min.js') }}"></script>
 <script src="{{ asset('node_modules/http-vue-loader/src/httpVueLoader.js') }}"></script>
+<script src="{{ asset('node_modules/axios/dist/axios.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 
 @stack('scripts')
