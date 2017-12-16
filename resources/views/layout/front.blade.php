@@ -60,6 +60,7 @@
     function getAppConfig() {
         return {
             url: '{{ asset('/') }}',
+            env: '{{ config('app.env') }}',
         }
     }
 </script>
